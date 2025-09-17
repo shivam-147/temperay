@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Responsive viewport for proper scaling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portable Appliance Test Certificate</title>
+
+    <!-- Internal CSS for styling the report -->
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact;
+            /* Ensures colors print accurately */
+        }
+
+        /* Logo box image styling */
+        .logo-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* Page layout for consistent page breaks */
+        .page {
+            width: 100%;
+            min-height: 100%;
+            page-break-after: always;
+            position: relative;
+        }
+
+        /* Header styling for title and page number */
+        header {
+            background: #2C3F7C;
+            color: #fff;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        /* Details row layout */
+        .section-row {
+            display: flex;
+            gap: 15px;
+            margin: 15px 30px;
+        }
+
+        .details {
+            flex: 1;
+            background: #E6E9EF;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .details h2 {
+            margin: 0;
+            background: #2C3F7C;
+            color: #fff;
+            font-size: 22px;
+            padding: 6px 8px;
+        }
+
+        .details .box {
+            background: #fff;
+            padding: 8px;
+            flex: 1;
+            margin: 15px;
+            border: 1px solid black;
+        }
+
+        .details .box p {
+            font-size: 20px;
+            margin: 4px 0;
+        }
+
+        /* Carried out section with page break */
+        .carried-out-section {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 20px 30px;
+            page-break-after: always;
+            break-after: page;
+        }
+
+        .carried-out-div,
+        .right-col {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Left column for testing details and signatures */
+        .left-col {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+            background: #E6E9EF;
+        }
+
+        .left-col h3 {
+            background: #2C3F7C;
+            color: white;
+            margin: 0;
+            padding: 6px;
+            font-size: 16px;
+        }
+
+        .details-box,
+        .signature-box,
+        .instruments-box {
+            background: white;
+            border: 1px solid black;
+            padding: 10px;
+            min-height: 50px;
+            font-size: 16px;
+            margin-bottom: 25px;
+            flex: 2;
+            min-width: 400px;
+        }
+
+        .details-box {
+            padding-bottom: 40px;
+        }
+
+        .signature-box img {
+            height: 80%;
+            width: 150px;
+            object-fit: contain;
+            margin: 0 auto;
+        }
+
+        /* Logos column styling */
+        .logos-col {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 140px;
+            margin-right: 5px;
+        }
+
+        .logo-box {
+            background: #E6E9EF;
+            border: 1px solid black;
+            height: 120px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 12px;
+            padding: 5px 0;
+        }
+
+        /* Right column for declaration and limitations */
+        .right-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .right-col h3 {
+            background: #2C3F7C;
+            color: white;
+            margin: 0;
+            padding: 6px;
+            font-size: 16px;
+        }
+
+        .declaration-box,
+        .limitations-box {
+            background: #E6E9EF;
+            min-height: 80px;
+            font-size: 13px;
+        }
+
+        .declaration-box div,
+        .limitations-box div {
+            margin: 10px;
+            padding: 5px;
+            border: 1px solid black;
+            font-size: 16px;
+        }
+
+        /* Table styling for appliance register and failed appliances */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #000;
+            background-color: white;
+            padding: 10px;
+        }
+
+        table th {
+            background: #E6E6E6;
+        }
+
+        thead tr th {
+            font-size: 23px;
+            border: 2px solid black;
+        }
+
+        td {
+            font-size: 22px;
+            /* Corrected typo from '21x' to '22px' */
+            text-align: center;
+        }
+
+        /* Notes section styling */
+        .notes-box {
+            border: 1px solid black;
+            min-height: 120px;
+            font-size: 18px;
+            margin: 8px;
+            padding: 10px;
+        }
+
+        .section {
+            margin: 15px;
+            background: #E6E9EF;
+        }
+
+        .section-title {
+            background: #2C3F7C;
+            color: #fff;
+            font-size: 18px;
+            padding: 4px 6px;
+            margin-bottom: 5px;
+        }
+
+        /* Left sub-column for details and logos */
+        .left-sub-col {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+
+        .details-box p,
+        .signature-box p,
+        .instruments-box p {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        /* Appliance register and failed appliances section */
+        .appliance-register,
+        .appliance-failed {
+            margin: 10px 20px;
+        }
+
+        .appliance-register h2,
+        .appliance-failed h2 {
+            background: #2C3F7C;
+            color: #fff;
+            margin-bottom: 0;
+            font-size: 20px;
+            padding: 5px;
+        }
+
+        /* Page number indicator styling */
+        .img-div {
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            color: black;
+            font-size: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Vertical and horizontal text styling for table headers */
+        .vertical {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            white-space: nowrap;
+            text-align: left;
+        }
+
+        .horizontal {
+            text-align: start;
+            padding-top: 200px;
+            padding-left: 10px;
+        }
+
+        .horizontal div {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- PAGE 1: Client Details, Testing Site, and Summary -->
+    <div class="page">
+        <header>
+            <div>
+                <h1>PORTABLE APPLIANCE TEST CERTIFICATE (PAT)</h1>
+            </div>
+            <div class="img-div">1</div>
+        </header>
+
+        <!-- Client, Testing Site, and Testing Summary Details -->
+        <div class="section-row">
+            <!-- Client Details -->
+            ${payload.Client_Details.map(
+            (item) => `
+            <div class="details">
+                <h2>CLIENT DETAILS</h2>
+                <div class="box">
+                    <p>Name: ${item?.clientName ?? ""}</p>
+                    <p>Address: ${(item?.client_address_1 ?? "") + " " + (item?.client_address_2 ?? "")}</p>
+                    <br>
+                    <p>Postcode: ${item?.client_postcode ?? ""}</p>
+                </div>
+            </div>
+            `
+            ).join("")}
+
+            <!-- Testing Site Details -->
+            ${payload.Testing_Details.map(
+            (item) => `
+            <div class="details">
+                <h2>TESTING SITE DETAILS</h2>
+                <div class="box">
+                    <p>Name: ${item.testing_name ?? ""}</p>
+                    <p>Address: ${(item?.testing_address_1 ?? "") + " " + (item?.testing_address_2 ?? "")}</p>
+                    <br>
+                    <p>Postcode: ${item?.testing_postcode ?? ""}</p>
+                </div>
+            </div>
+            `
+            ).join("")}
+
+            <!-- Testing Summary -->
+            <div class="details">
+                <h2>TESTING SUMMARY</h2>
+                <div class="box">
+                    ${payload.Total_Appliances.map(
+                    (item) => `
+                    <div>
+                        <p>Total Appliances Tested: ${item?.totalAppliances ?? ""}</p>
+                        <p>Appliances Passed: ${item?.appliances_passed ?? ""}</p>
+                        <p>Appliances Failed: ${item?.appliances_failed ?? ""}</p>
+                    </div>
+                    `
+                    ).join("")}
+                    <br>
+                    ${payload.Testing_Date.map(
+                    (item) => `
+                    <div>
+                        <p>Date Checked: ${item.testingDate?.split("T")[0] ?? ""}</p>
+                        <p>Recommended Retest Date: ${item.retestDate?.split("T")[0] ?? ""}</p>
+                    </div>
+                    `
+                    ).join("")}
+                </div>
+            </div>
+        </div>
+
+        <!-- Testing Carried Out Section -->
+        <div class="carried-out-section">
+            <!-- Left Column: Company Details, Signature, and Equipment -->
+            <div class="carried-out-div">
+                <div class="left-col">
+                    <h3>TESTING CARRIED OUT BY</h3>
+                    <div class="left-sub-col">
+                        <div>
+                            ${payload.Company_Details.map(
+                            (item) => `
+                            <div class="details-box">
+                                <p>Company Name: ${item.companyName ?? ""}</p>
+                                <p>Address: ${(item.company_address_1 ?? "") + " " + (item.company_address_2 ?? "")}</p>
+                                <br>
+                                <p>Postcode: ${item.postcode ?? ""}</p>
+                                <p>Email: ${item.email ?? ""}</p>
+                                <p>Contact No: ${item.phone ?? ""}</p>
+                                <br>
+                                <p>Schema Registration No: ${item.schemeRegNo ?? ""}</p>
+                                <p>Engineer Name: ${payload.Engineer_Details[0].engineerName}</p>
+                            </div>
+                            `
+                            ).join("")}
+                            <div class="signature-box">
+                                <h3>Signature:</h3>
+                                <img src=${payload.Engineer_Details[0].applianceSignature} />
+                            </div>
+                            ${payload.Testing_Equipment.map(
+                            (item) => `
+                            <div class="instruments-box">
+                                <p>Instrument Used: ${item?.instrumentUsed ?? ""}</p>
+                                <p>Serial Number: ${item?.serialNumber ?? ""}</p>
+                            </div>
+                            `
+                            ).join("")}
+                        </div>
+                        <div class="logos-col">
+                            <div class="logo-box">
+                                <img src=${portableApplianceTestB64}>
+                            </div>
+                            <div class="logo-box">
+                                <img src=${portableApplianceTest2B64}>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Declaration and Limitations -->
+            <div class="right-col">
+                <div class="declaration-box">
+                    <h3>DECLARATION</h3>
+                    <div style="background-color: white">
+                        This is to certify that the Electrical Appliances detailed on the attached record sheets
+                        have been tested for electrical safety in accordance with the Institute of Electrical
+                        Engineers Code of Practice for In Service Inspection and Testing of Electrical Equipment.
+                        This does not guarantee the future safety of the appliance, nor the correct operation for
+                        any length of time. The user should pay attention to any fault that may occur during future use.
+                        <br><br>
+                        Any failed appliances should be removed from service until the defect has been rectified.
+                        <br><br>
+                        These records should be kept safe for inspection by Health & Safety or Local Authority officers.
+                    </div>
+                </div>
+                <div class="limitations-box">
+                    <h3>LIMITATION ON TESTING</h3>
+                    <div style="background-color: white">
+                        ${payload.Limitations.map(
+                        (item) => `
+                        <p style="margin: 2px 5px; font-size: 18px">${item?.limitations ?? ""}</p>
+                        `
+                        ).join("")}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: Appliance Register -->
+    <div class="page">
+        <header>
+            <div>
+                <h1>PORTABLE APPLIANCE TEST CERTIFICATE (PAT)</h1>
+            </div>
+            <div class="img-div">2</div>
+        </header>
+
+        <div class="appliance-register">
+            <h2>Appliance Register</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="vertical">Appliance ID</th>
+                        <th class="horizontal">
+                            <div>Appliance</div>
+                        </th>
+                        <th class="horizontal">
+                            <div>Location</div>
+                        </th>
+                        <th class="vertical">Fuse Rating</th>
+                        <th class="vertical">Class</th>
+                        <th class="vertical">Visual Inspection</th>
+                        <th class="vertical">Polarity</th>
+                        <th class="vertical">Earth Continuity</th>
+                        <th class="vertical">Insulation Resistance</th>
+                        <th class="vertical">Leakage</th>
+                        <th class="vertical">Load Test</th>
+                        <th class="vertical">Pass/Fail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${payload.Appliances.map(
+                    (item) => `
+                    <tr>
+                        <td style="font-size: 22px">${item?.applianceId ?? ""}</td>
+                        <td style="font-size: 22px">${item?.appliance ?? ""}</td>
+                        <td style="font-size: 22px">${item?.location ?? ""}</td>
+                        <td style="font-size: 22px">${item?.fuseRating ?? ""}</td>
+                        <td style="font-size: 22px">${item?.class ?? ""}</td>
+                        <td style="font-size: 22px">${item?.visualInspection ?? ""}</td>
+                        <td style="font-size: 22px">${item?.polarity ?? ""}</td>
+                        <td style="font-size: 22px">${item?.earthContinuity ?? ""}</td>
+                        <td style="font-size: 22px">${item?.insulationResistance ?? ""}</td>
+                        <td style="font-size: 22px">${item?.leakage ?? ""}</td>
+                        <td style="font-size: 22px">${item?.loadTest ?? ""}</td>
+                        <td style="font-size: 22px">${item?.passFail ?? ""}</td>
+                    </tr>
+                    `
+                    ).join("")}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- PAGE 3: Failed Appliances and Notes -->
+    <div class="page">
+        <header>
+            <div>
+                <h1>PORTABLE APPLIANCE TEST CERTIFICATE (PAT)</h1>
+            </div>
+            <div class="img-div">3</div>
+        </header>
+
+        <div class="appliance-failed">
+            <h2>Failed Appliance</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="vertical">Appliance ID</th>
+                        <th style="text-align: start; padding-top: 100px; padding-left: 10px;">Appliance</th>
+                        <th style="text-align: start; padding-top: 100px; padding-left: 10px;">Reason for Failure</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${payload.Failed_Appliances.map(
+                    (item) => `
+                    <tr>
+                        <td style="font-size: 22px">${item?.id ?? ""}</td>
+                        <td style="font-size: 22px">${item?.appliance ?? ""}</td>
+                        <td style="font-size: 22px">${item.reason ?? ""}</td>
+                    </tr>
+                    `
+                    ).join("")}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <div class="section-title">NOTES</div>
+            <div class="notes-box" style="background-color: white">
+                ${payload.Note[0].Note ?? ""}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

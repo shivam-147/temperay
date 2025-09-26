@@ -214,7 +214,6 @@
 
         td {
             font-size: 22px;
-            /* Corrected typo from '21x' to '22px' */
             text-align: center;
         }
 
@@ -303,6 +302,13 @@
             flex-direction: column;
             justify-content: flex-end;
         }
+
+        footer {
+            width: 100%;
+            position: absolute;
+            bottom: 2rem;
+            text-align: right;
+        }
     </style>
 </head>
 
@@ -319,57 +325,41 @@
         <!-- Client, Testing Site, and Testing Summary Details -->
         <div class="section-row">
             <!-- Client Details -->
-            ${payload.Client_Details.map(
-            (item) => `
             <div class="details">
                 <h2>CLIENT DETAILS</h2>
                 <div class="box">
-                    <p>Name: ${item?.clientName ?? ""}</p>
-                    <p>Address: ${(item?.client_address_1 ?? "") + " " + (item?.client_address_2 ?? "")}</p>
+                    <p>Name: </p>
+                    <p>Address: </p>
                     <br>
-                    <p>Postcode: ${item?.client_postcode ?? ""}</p>
+                    <p>Postcode: </p>
                 </div>
             </div>
-            `
-            ).join("")}
 
             <!-- Testing Site Details -->
-            ${payload.Testing_Details.map(
-            (item) => `
             <div class="details">
                 <h2>TESTING SITE DETAILS</h2>
                 <div class="box">
-                    <p>Name: ${item.testing_name ?? ""}</p>
-                    <p>Address: ${(item?.testing_address_1 ?? "") + " " + (item?.testing_address_2 ?? "")}</p>
+                    <p>Name: </p>
+                    <p>Address: </p>
                     <br>
-                    <p>Postcode: ${item?.testing_postcode ?? ""}</p>
+                    <p>Postcode: </p>
                 </div>
             </div>
-            `
-            ).join("")}
 
             <!-- Testing Summary -->
             <div class="details">
                 <h2>TESTING SUMMARY</h2>
                 <div class="box">
-                    ${payload.Total_Appliances.map(
-                    (item) => `
                     <div>
-                        <p>Total Appliances Tested: ${item?.totalAppliances ?? ""}</p>
-                        <p>Appliances Passed: ${item?.appliances_passed ?? ""}</p>
-                        <p>Appliances Failed: ${item?.appliances_failed ?? ""}</p>
+                        <p>Total Appliances Tested: </p>
+                        <p>Appliances Passed: </p>
+                        <p>Appliances Failed: </p>
                     </div>
-                    `
-                    ).join("")}
                     <br>
-                    ${payload.Testing_Date.map(
-                    (item) => `
                     <div>
-                        <p>Date Checked: ${item.testingDate?.split("T")[0] ?? ""}</p>
-                        <p>Recommended Retest Date: ${item.retestDate?.split("T")[0] ?? ""}</p>
+                        <p>Date Checked: </p>
+                        <p>Recommended Retest Date: </p>
                     </div>
-                    `
-                    ).join("")}
                 </div>
             </div>
         </div>
@@ -382,40 +372,32 @@
                     <h3>TESTING CARRIED OUT BY</h3>
                     <div class="left-sub-col">
                         <div>
-                            ${payload.Company_Details.map(
-                            (item) => `
                             <div class="details-box">
-                                <p>Company Name: ${item.companyName ?? ""}</p>
-                                <p>Address: ${(item.company_address_1 ?? "") + " " + (item.company_address_2 ?? "")}</p>
+                                <p>Company Name: </p>
+                                <p>Address: </p>
                                 <br>
-                                <p>Postcode: ${item.postcode ?? ""}</p>
-                                <p>Email: ${item.email ?? ""}</p>
-                                <p>Contact No: ${item.phone ?? ""}</p>
+                                <p>Postcode: </p>
+                                <p>Email: </p>
+                                <p>Contact No: </p>
                                 <br>
-                                <p>Schema Registration No: ${item.schemeRegNo ?? ""}</p>
-                                <p>Engineer Name: ${payload.Engineer_Details[0].engineerName}</p>
+                                <p>Schema Registration No: </p>
+                                <p>Engineer Name: </p>
                             </div>
-                            `
-                            ).join("")}
                             <div class="signature-box">
                                 <h3>Signature:</h3>
-                                <img src=${payload.Engineer_Details[0].applianceSignature} />
+                                <img src="" />
                             </div>
-                            ${payload.Testing_Equipment.map(
-                            (item) => `
                             <div class="instruments-box">
-                                <p>Instrument Used: ${item?.instrumentUsed ?? ""}</p>
-                                <p>Serial Number: ${item?.serialNumber ?? ""}</p>
+                                <p>Instrument Used: </p>
+                                <p>Serial Number: </p>
                             </div>
-                            `
-                            ).join("")}
                         </div>
                         <div class="logos-col">
                             <div class="logo-box">
-                                <img src=${portableApplianceTestB64}>
+                                <img src="">
                             </div>
                             <div class="logo-box">
-                                <img src=${portableApplianceTest2B64}>
+                                <img src="">
                             </div>
                         </div>
                     </div>
@@ -441,15 +423,14 @@
                 <div class="limitations-box">
                     <h3>LIMITATION ON TESTING</h3>
                     <div style="background-color: white">
-                        ${payload.Limitations.map(
-                        (item) => `
-                        <p style="margin: 2px 5px; font-size: 18px">${item?.limitations ?? ""}</p>
-                        `
-                        ).join("")}
+                        <p style="margin: 2px 5px; font-size: 18px"></p>
                     </div>
                 </div>
             </div>
         </div>
+        <footer>
+            <h1>PAT1234 page-2</h1>
+        </footer>
     </div>
 
     <!-- PAGE 2: Appliance Register -->
@@ -485,24 +466,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    ${payload.Appliances.map(
-                    (item) => `
                     <tr>
-                        <td style="font-size: 22px">${item?.applianceId ?? ""}</td>
-                        <td style="font-size: 22px">${item?.appliance ?? ""}</td>
-                        <td style="font-size: 22px">${item?.location ?? ""}</td>
-                        <td style="font-size: 22px">${item?.fuseRating ?? ""}</td>
-                        <td style="font-size: 22px">${item?.class ?? ""}</td>
-                        <td style="font-size: 22px">${item?.visualInspection ?? ""}</td>
-                        <td style="font-size: 22px">${item?.polarity ?? ""}</td>
-                        <td style="font-size: 22px">${item?.earthContinuity ?? ""}</td>
-                        <td style="font-size: 22px">${item?.insulationResistance ?? ""}</td>
-                        <td style="font-size: 22px">${item?.leakage ?? ""}</td>
-                        <td style="font-size: 22px">${item?.loadTest ?? ""}</td>
-                        <td style="font-size: 22px">${item?.passFail ?? ""}</td>
+                        <td style="font-size: 22px"></td>
+                        <td style="font-size: 22px"></td>
+                        <td style="font-size: 22px"></td>
+                        <td style="font-size: 22px"></td>
+                        <td style="font-size: 22px"></td>
+                        <td style="font-size: 22px"></td>
+                        <td style="font-size: 22px"></td>
+                        <td style="font-size: 22px"></td>
+                        <td style="font-size: 22px"></td>
+                        <td style="font-size: 22px"></td>
+                        <td style="font-size: 22px"></td>
+                        <td style="font-size: 22px"></td>
                     </tr>
-                    `
-                    ).join("")}
                 </tbody>
             </table>
         </div>
@@ -528,15 +505,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    ${payload.Failed_Appliances.map(
-                    (item) => `
                     <tr>
-                        <td style="font-size: 22px">${item?.id ?? ""}</td>
-                        <td style="font-size: 22px">${item?.appliance ?? ""}</td>
-                        <td style="font-size: 22px">${item.reason ?? ""}</td>
+                        <td style="font-size: 22px"></td>
+                        <td style="font-size: 22px"></td>
+                        <td style="font-size: 22px"></td>
                     </tr>
-                    `
-                    ).join("")}
                 </tbody>
             </table>
         </div>
@@ -544,9 +517,11 @@
         <div class="section">
             <div class="section-title">NOTES</div>
             <div class="notes-box" style="background-color: white">
-                ${payload.Note[0].Note ?? ""}
             </div>
         </div>
+        <footer>
+            <h2>PAT1234 Page-3</h2>
+        </footer>
     </div>
 </body>
 

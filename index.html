@@ -26,18 +26,9 @@
             margin: 0;
         }
 
-        .logo {
-            width: 100px;
-            height: 60px;
-            background: #fff;
-            object-fit: contain;
-        }
-
         .page {
             width: 100%;
-            min-height: 100vh;
             page-break-after: always;
-            position: relative;
         }
 
         .section-row {
@@ -78,6 +69,7 @@
             display: flex;
             gap: 20px;
             margin: 20px 30px;
+            page-break-after: always;
         }
 
         .left-col {
@@ -106,10 +98,6 @@
             font-size: 16px;
             margin-bottom: 25px;
             min-width: 400px;
-        }
-
-        .details-box {
-            padding-bottom: 40px;
         }
 
         .signature-box img {
@@ -176,19 +164,6 @@
             font-size: 22px;
         }
 
-        .declaration-box div,
-        .limitations-box div {
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid black;
-            font-size: 16px;
-        }
-
-        .declaration-box div p {
-            margin: 0;
-            font-size: 19px;
-        }
-
         table {
             width: 100%;
             border-collapse: collapse;
@@ -213,46 +188,17 @@
         }
 
         .img-div {
-            position: relative;
-            width: 65px;
-            height: 65px;
-            margin-right: 10px;
+            width: 50px;
+            height: 50px;
+            color: #000;
+            font-size: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .img-div img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .img-div span {
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: black;
-            font-size: 30px;
-            font-weight: bold;
-        }
-
         .company-detail p {
             margin: 12px;
-        }
-
-        .footer {
-            position: absolute;
-            bottom: 1.5rem;
-            right: 2.5rem;
-            width: 100%;
-            text-align: right;
-            z-index: 1000;
-        }
-
-        .footer h2 {
-            font-weight: normal;
         }
     </style>
 </head>
@@ -263,76 +209,61 @@
             <div>
                 <h1>LEGIONELLA RISK ASSESSMENT (LRA)</h1>
             </div>
-            <div class="img-div">
-                <img src="[[ICON_PLACEHOLDER]]">
-                <span>1</span>
-            </div>
+            <div class="img-div">1</div>
         </header>
 
         <div class="section-row">
             <div class="details">
                 <h2>CLIENT DETAILS</h2>
                 <div class="box">
-                    <p>Name: [[CLIENT_NAME]] </p>
-                    <p>Address: [[CLIENT_ADDRESS]]</p>
-                    <br>
-                    <p>Postcode: [[CLIENT_POSTCODE]]</p>
+                    <p>Name: [Assessor Name]</p>
+                    <p>Address: [Address 1] [Address 2]</p>
+                    <p>Postcode: [Postcode]</p>
                 </div>
             </div>
             <div class="details">
                 <h2>TESTING SITE DETAILS</h2>
                 <div class="box">
-                    <p>Name: [[SITE_NAME]]</p>
-                    <p>Address: [[SITE_ADDRESS]]</p>
-                    <br>
-                    <p>Postcode: [[SITE_POSTCODE]]</p>
+                    <p>Name: [Duty Holder]</p>
+                    <p>Address: [Address 1] [Address 2]</p>
+                    <p>Postcode: [Postcode]</p>
                 </div>
             </div>
             <div class="details">
                 <h2>TESTING SUMMARY</h2>
                 <div class="box">
-                    <p>Date system checked: [[TEST_DATE]]</p>
-                    <br>
-                    <p>Recommended Retest Date: [[RETEST_DATE]]</p>
-                    <br>
-                    <p>Occupancy Status: [[OCCUPANCY_STATUS]] </p>
-                    <p>Vulnerable Occupants: [[VULNERABLE_OCCUPANTS]]</p>
+                    <p>Date system checked: [Testing Date]</p>
+                    <p>Recommended Retest Date: [Retest Date]</p>
+                    <p>Occupancy Status: [Occupancy Status]</p>
+                    <p>Vulnerable Occupants: [Vulnerable Occupants]</p>
                 </div>
             </div>
         </div>
 
-        <!-- carried-out-section -->
         <div class="carried-out-section">
             <div class="left-col">
                 <h3>TESTING CARRIED OUT BY</h3>
                 <div style="display: flex; margin-left: 20px;">
                     <div>
-                        <div class="details-box company-detail" style="padding: 0; font-size: 22px;">
-                            <p>Company Name: [[COMPANY_NAME]] </p>
-                            <p>Address: [[COMPANY_ADDRESS]] </p>
-                            <br>
-                            <p>Postcode: [[COMPANY_POSTCODE]] </p>
-                            <p>Email: [[COMPANY_EMAIL]]</p>
-                            <p>Contact No: [[COMPANY_CONTACT]] </p>
-                            <br>
-                            <p>Scheme Registration No: [[REGISTER_NO]] </p>
-                            <p>Engineer Name: [[ENGINEER_NAME]]</p>
-                            <br><br>
+                        <div class="details-box company-detail">
+                            <p>Company Name: [Business Name]</p>
+                            <p>Address: [Business Address]</p>
+                            <p>Postcode: [Postcode]</p>
+                            <p>Email: [Email]</p>
+                            <p>Contact No: [Contact Number]</p>
+                            <p>Scheme Registration No: [Registration No]</p>
+                            <p>Engineer Name: [Engineer Name]</p>
                         </div>
-                        <div class="signature-box" style="padding: 0">
-                            <h3 style="background-color: white; color: black; font-weight: normal">Signature:</h3>
+                        <div class="signature-box">
+                            <h3>Signature:</h3>
                             <div>
-                                <img src="[[ENGINEER_SIGNATURE]]" alt="no signature">
+                                <img src="[Engineer Signature]" alt="no signature">
                             </div>
                         </div>
                     </div>
                     <div class="logos-col">
-                        <div class="logo-box">
-                            <img src="[[LOGO_1]]">
-                        </div>
-                        <div class="logo-box">
-                            <img src="[[LOGO_2]]">
-                        </div>
+                        <div class="logo-box"><img src="[Logo 1]"></div>
+                        <div class="logo-box"><img src="[Logo 2]"></div>
                     </div>
                 </div>
             </div>
@@ -341,20 +272,195 @@
                 <div class="declaration-box">
                     <h3>DECLARATION</h3>
                     <div style="background: white;">
-                        <p>[[DECLARATION_TEXT]]</p>
+                        <p>[Declaration Text]</p>
                     </div>
                 </div>
                 <div class="limitations-box">
                     <h3>LIMITATIONS ON TESTING</h3>
                     <div style="background: white;">
-                        <p>[[LIMITATION_TEXT]]</p>
+                        <p>[Limitations Text]</p>
                     </div>
                 </div>
             </div>
         </div>
-        <footer class="footer">
-            <h2>LRA[[CERTIFICATE_NO]] Page-1</h2>
-        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div>
+                <h1>LEGIONELLA RISK ASSESSMENT (LRA)</h1>
+            </div>
+            <div class="img-div">2</div>
+        </header>
+        <div class="legionell-para declaration-box">
+            <h3>LEGIONELLOSIS & LEGIONNAIRES' DISEASE</h3>
+            <div style="background: white;">
+                <p>[Legionellosis Info Text]</p>
+            </div>
+        </div>
+        <div style="display: flex; gap: 20px;">
+            <div class="legionell-para declaration-box" style="width: 43%; height: 27rem;">
+                <h3>WATER SYSTEM DETAILS</h3>
+                <div style="background-color: white;">
+                    <p>Water Source: [Water Source]</p>
+                    <p>Cold Water Storage Tank: [Yes/No]</p>
+                    <p>Number of Tanks: [Number]</p>
+                    <p>Hot Water System: [Yes/No]</p>
+                    <p>Heating Source: [Heating Source]</p>
+                    <p>Showers Present: [Yes/No]</p>
+                    <p>Number of Showers: [Number]</p>
+                </div>
+            </div>
+            <div class="legionell-para declaration-box" style="width: 55%; background: #fff;">
+                <h3>WATER TEMPERATURE RESULT</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Outlet Location</th>
+                            <th>Cold Temp (°C)</th>
+                            <th>Fed By</th>
+                            <th>Hot Temp (°C)</th>
+                            <th>Fed By</th>
+                            <th>Compliant</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>[Outlet Location]</td>
+                            <td>[Cold Temp]</td>
+                            <td>[Fed By 1]</td>
+                            <td>[Hot Temp]</td>
+                            <td>[Fed By 2]</td>
+                            <td>[Yes/No]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <header>
+            <div>
+                <h1>LEGIONELLA RISK ASSESSMENT (LRA)</h1>
+            </div>
+            <div class="img-div">3</div>
+        </header>
+        <div class="legionell-para declaration-box">
+            <h3>SUMMARY & RECOMMENDATIONS</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Area</th>
+                        <th>Issue</th>
+                        <th>Risk Level</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Cold Water Temp</td>
+                        <td>[Issue]</td>
+                        <td>[Risk Level]</td>
+                        <td>[Comments]</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Hot Water Temp</td>
+                        <td>[Issue]</td>
+                        <td>[Risk Level]</td>
+                        <td>[Comments]</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Shower Heads</td>
+                        <td>[Issue]</td>
+                        <td>[Risk Level]</td>
+                        <td>[Comments]</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Cold Water Tank</td>
+                        <td>[Issue]</td>
+                        <td>[Risk Level]</td>
+                        <td>[Comments]</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Dead Legs</td>
+                        <td>[Issue]</td>
+                        <td>[Risk Level]</td>
+                        <td>[Comments]</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Little Used Outlets</td>
+                        <td>[Issue]</td>
+                        <td>[Risk Level]</td>
+                        <td>[Comments]</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Unoccupied Properties</td>
+                        <td>[Issue]</td>
+                        <td>[Risk Level]</td>
+                        <td>[Comments]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="page">
+        <header>
+            <div>
+                <h1>LEGIONELLA RISK ASSESSMENT (LRA)</h1>
+            </div>
+            <div class="img-div">4</div>
+        </header>
+        <div class="legionell-para declaration-box">
+            <h3>PHOTOGRAPHIC EVIDENCE</h3>
+            <div
+                style="display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 30px; padding: 50px; border: none;">
+                <img src="[Shower Head Image]" alt="No Image" width="240" height="300">
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <header>
+            <div>
+                <h1>LEGIONELLA RISK ASSESSMENT (LRA)</h1>
+            </div>
+            <div class="img-div">5</div>
+        </header>
+        <div class="legionell-para declaration-box" style="display: flex; flex-direction: column; gap: 20px;">
+            <h3>SUPPLEMENTAL INFORMATION & GUIDANCE</h3>
+            <div style="background-color: #fff">
+                <h4>COLD WATER STORAGE TANK</h4>
+                <p>[Cold Water Storage Tank Info]</p>
+            </div>
+            <div style="background-color: #fff">
+                <h4>LITTLE-USED OUTLET</h4>
+                <p>[Little-used Outlet Info]</p>
+            </div>
+            <div style="background-color: #fff">
+                <h4>DEAD LEGS</h4>
+                <p>[Dead Legs Info]</p>
+            </div>
+            <div style="background-color: #fff">
+                <h4>UNOCCUPIED PROPERTIES</h4>
+                <p>[Unoccupied Properties Info]</p>
+            </div>
+            <div style="background-color: #fff">
+                <h4>SHOWER HEAD</h4>
+                <p>[Shower Head Info]</p>
+            </div>
+        </div>
     </div>
 </body>
 

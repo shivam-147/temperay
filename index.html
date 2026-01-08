@@ -1,12 +1,19 @@
-    <html lang="en" xmlns="http://www.w3.org/1999/html">
+  <!DOCTYPE html>
+    <html lang="en">
       <head>
-        <!-- Set viewport for responsive design -->
+        <!-- Responsive viewport for proper scaling -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>GAS Report Certificate</title>
+        <title>Portable Appliance Test Certificate</title>
 
         <!-- Internal CSS for styling the report -->
         <style>
           /* General body styling */
+          @font-face {
+            font-family: 'Canva Sans';
+            font-weight: normal;
+            font-style: normal;
+          }
+
           * {
             margin: 0;
             padding: 0;
@@ -19,14 +26,30 @@
             size: auto;
           }
 
-          body {
+          body { 
+            font-family: 'Canva Sans', sans-serif;
             margin: 0;
-            font-family: Arial, sans-serif;
             padding: 0;
             -webkit-print-color-adjust: exact; /* Ensures colors print accurately */
           }
 
-          /* Header styling for the certificate title and logo */
+          /* Logo box image styling */
+          .logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            aspect-ratio: 1/1;
+          }
+
+          /* Page layout for consistent page breaks */
+          .page {
+            width: 100%;
+            height: 100%;
+            page-break-after: always;
+            position: relative;
+          }
+
+          /* Header styling for title and page number */
           header {
             background: #2C3F7C;
             color: #fff;
@@ -41,29 +64,13 @@
             margin: 0;
           }
 
-          .logo {
-            width: 100px;
-            height: 60px;
-            background: #fff;
-            object-fit: contain;
-          }
-
-          /* Page layout for consistent page breaks */
-          .page {
-            width: 100%;
-            height: 100%;
-            page-break-after: always;
-            position: relative;
-          }
-
-          /* Flexbox row for section layout */
+          /* Details row layout */
           .section-row {
             display: flex;
             gap: 15px;
             margin: 15px 30px;
           }
 
-          /* Styling for client, site, and summary details sections */
           .details {
             flex: 1;
             background: #E6E9EF;
@@ -75,7 +82,7 @@
             margin: 0;
             background: #2C3F7C;
             color: #fff;
-            font-size: 22px;
+            font-size: 20px;
             padding: 6px 8px;
           }
 
@@ -92,8 +99,9 @@
             margin: 4px 0;
           }
 
-          /* Styling for the carried-out section, with page break */
+          /* Carried out section with page break */
           .carried-out-section {
+            display: flex;
             justify-content: space-between;
             gap: 20px;
             margin: 20px 30px;
@@ -101,26 +109,25 @@
 
           .carried-out-div,
           .right-col {
-            display: flex;
+            flex: 1;
             min-width: 0;
           }
 
           /* Left column for testing details and signatures */
           .left-col {
-            flex: 1;
-            background: #E6E9EF;
-            margin-right: 10px;
             display: flex;
             flex-direction: column;
             gap: 10px;
+            flex: 1;
+            background: #E6E9EF;
           }
-
+            
           .left-col h3 {
             background: #2C3F7C;
             color: white;
             margin: 0;
             padding: 6px;
-            font-size: 22px;
+            font-size: 20px;
           }
 
           .details-box,
@@ -147,9 +154,9 @@
             margin: 0 auto;
           }
 
-          /* Column for logos */
+          /* Logos column styling */
           .logos-col {
-            display: flex;
+            display: flex; 
             flex-direction: column;
             gap: 10px;
             width: 140px;
@@ -168,21 +175,12 @@
             padding: 5px;
           }
 
-          .logo-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            aspect-ratio: 1/1;
-          }
-
           /* Right column for declaration and limitations */
           .right-col {
             flex: 1;
             display: flex;
             flex-direction: column;
             gap: 10px;
-            height: auto;
-            margin-left: 20px;
           }
 
           .right-col h3 {
@@ -190,7 +188,7 @@
             color: white;
             margin: 0;
             padding: 6px;
-            font-size: 22px;
+            font-size: 20px;
           }
 
           .declaration-box,
@@ -203,18 +201,15 @@
           .declaration-box div,
           .limitations-box div {
             margin: 10px;
-            padding: 10px;
+            padding: 5px;
             border: 1px solid black;
-            font-size: 16px;
-            background-color: white;
+            font-size: 18px;
+            text-align: justify;
+            padding-right: 15px;
+            padding-bottom: 15px;
           }
 
-          .declaration-box div p {
-            margin: 0;
-            font-size: 19px;
-          }
-
-          /* Table styling for appliance and inspection details */
+          /* Table styling for appliance register and failed appliances */
           table {
             width: 100%;
             border-collapse: collapse;
@@ -223,20 +218,22 @@
 
           table th,
           table td {
-            border: 2px solid #000;
+            border: 1px solid #000;
             background-color: white;
-            padding: 10px 0;
+            padding: 10px;
           }
 
           table th {
             background: #E6E6E6;
+          }
+
+          thead tr th {
             font-size: 23px;
             border: 2px solid black;
           }
 
           td {
-            font-size: 21px;
-            padding: 10px;
+            font-size: 22px; 
             text-align: center;
           }
 
@@ -247,9 +244,9 @@
             font-size: 18px;
             margin: 8px;
             padding: 10px;
+            font-weight: bold;
           }
 
-          /* General section styling */
           .section {
             margin: 15px;
             background: #E6E9EF;
@@ -258,11 +255,13 @@
           .section-title {
             background: #2C3F7C;
             color: #fff;
-            font-size: 18px;
+            font-size: 20px;
             padding: 4px 6px;
             margin-bottom: 5px;
+            font-weight: bold;
           }
 
+          /* Left sub-column for details and logos */
           .left-sub-col {
             display: flex;
             justify-content: space-between;
@@ -273,17 +272,16 @@
           .signature-box p,
           .instruments-box p {
             margin: 0;
-            font-size: 20px;
-            margin: 3px;
+            font-size: 18px;
           }
 
-          /* Appliance details and failed appliances styling */
-          .appliance-details,
+          /* Appliance register and failed appliances section */
+          .appliance-register,
           .appliance-failed {
             margin: 10px 20px;
           }
 
-          .appliance-details h2,
+          .appliance-register h2,
           .appliance-failed h2 {
             background: #2C3F7C;
             color: #fff;
@@ -292,7 +290,6 @@
             padding: 5px;
           }
 
-          /* Miscellaneous styling for images and text orientation */
           /* Page number indicator styling */
           .img-div {
             position: relative;
@@ -303,13 +300,13 @@
             align-items: center;
             justify-content: center;
           }
-
+            
           .img-div img {
             width: 100%;
             height: 100%;
             object-fit: contain;
           }
-
+            
           .img-div span {
             position: absolute;
             top: 60%;
@@ -319,40 +316,32 @@
             font-size: 30px;
             font-weight: bold;
           }
-
-          /* Bottom tables and outcomes layout */
-          .bottom-tables-outcomes {
-            display: flex;
-            width: 100%;
+              
+          .vertical span {
+            writing-mode: vertical-rl;   
+            transform: rotate(180deg);   
+            display: inline-block;
+            white-space: nowrap;
+            font-size: 23px;
+            padding: 5px;
+            text-align: left;
           }
-
-          .outcome-box {
-            border: 1px solid #000;
-            width: 30%;
-            padding: 4px;
-            margin-top: 10px;
-            height: 21rem;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+          
+          /* Horizontal headings ke liye */
+          .horizontal span {
+            writing-mode: horizontal-tb; /* Normal horizontal */
+            display: inline-block;
+            white-space: nowrap;
+            font-size: 23px;
             padding: 10px;
-          }
-
-          .outcome-box p {
-            font-size: 16px;
-          }
-
-          .bottom-tables {
-            width: 68%;
-          }
-
-          .small-font {
-            font-size: 16px;
             text-align: center;
-            padding-left: 5px;
-            padding-right: 5px;
           }
 
+          .apid {
+            padding-right: 20px;
+            text-align: center; 
+          }
+            
           .footer {
             width: 100%;
             position: absolute;
@@ -363,66 +352,64 @@
 
           .footer h2 {
             font-weight: normal;
-          }
+          }  
         </style>
       </head>
 
       <body>
-        <!-- Page 1: Client, Site, and Testing Summary -->
+        <!-- PAGE 1: Client Details, Testing Site, and Summary -->
         <div class="page">
           <header>
             <div>
-              <h1>GAS SAFETY CERTIFICATE (GSC)</h1>
+              <h1>PORTABLE APPLIANCE TEST CERTIFICATE (PAT)</h1>
             </div>
             <div class="img-div">
               <img src=${icon}>
-              <span>1</span>
+              <span>${pageCounter}</span>
             </div>
           </header>
 
-          <!-- Client, Site, and Testing Summary Details -->
+          <!-- Client, Testing Site, and Testing Summary Details -->
           <div class="section-row">
             <!-- Client Details -->
-            <div class="details">
-              <h2>CLIENT DETAILS</h2>
-              ${payload.Customer_Details.map((item) => `
+            ${payload.Client_Details.map((item) => `
+              <div class="details">
+                <h2>CLIENT DETAILS</h2>
                 <div class="box">
-                  <p>Name: ${item?.name ?? ""}</p>
-                  <p>Address: ${(item?.Address_1 ?? "") + " " + (item?.Address_2 ?? "")}</p>
+                  <p>Name: ${item?.clientName ?? ""}</p>
+                  <p>Address: ${(item?.client_address_1 ?? "") + " " + (item?.client_address_2 ?? "")}</p>
                   <br>
-                  <p>Postcode: ${item?.postcode ?? ""}</p>
+                  <p>Postcode: ${item?.client_postcode ?? ""}</p>
                 </div>
-              `).join("")}
-            </div>
+              </div>
+            `).join("")}
 
             <!-- Testing Site Details -->
-            <div class="details">
-              <h2>TESTING SITE DETAILS</h2>
-              ${payload.Site_Details.map((item) => `
+            ${payload.Testing_Details.map((item) => `
+              <div class="details">
+                <h2>TESTING SITE DETAILS</h2>
                 <div class="box">
-                  <p>Name: ${item?.name ?? ""}</p>
-                  <p>Address: ${(item?.address_1 ?? "") + " " + (item?.address_2 ?? "")}</p>
+                  <p>Name: ${item.testing_name ?? ""}</p>
+                  <p>Address: ${(item?.testing_address_1 ?? "") + " " + (item?.testing_address_2 ?? "")}</p>
                   <br>
-                  <p>Postcode: ${item?.postcode ?? ""}</p>
+                  <p>Postcode: ${item?.testing_postcode ?? ""}</p>
                 </div>
-              `).join("")}
-            </div>
+              </div>
+            `).join("")}
 
             <!-- Testing Summary -->
             <div class="details">
               <h2>TESTING SUMMARY</h2>
               <div class="box">
-                ${payload.Tested_Appliances.map((item) => `
-                  <div>
-                    <p>Total Appliances Tested: ${item?.totalAppliances ?? 0}</p>
-                    <p style="margin-left: 20px;">Appliances Passed: ${item?.passed ?? ""}</p>
-                    <p style="margin-left: 20px;">Appliances Failed: ${item?.failed ?? ""}</p>
-                  </div>
-                `).join("")}
+                <div>
+                  <p>Total Appliances Tested: ${payload?.Appliances[0].appliancesList?.length ?? ""}</p>
+                  <p style="padding-left: 20px">Appliances Passed: ${passed ?? ""}</p>
+                  <p style="padding-left: 20px">Appliances Failed: ${failed ?? ""}</p>
+                </div>
                 <br>
-                ${payload.Issuer.map((item) => `
+                ${payload?.Testing_Date.map((item) => `
                   <div>
-                    <p>Date appliance(s)/flue(s) checked: ${formattedTestingDate ?? ""}</p>
+                    <p>Date Checked: ${formattedTestingDate ?? ""}</p>
                     <p>Recommended Retest Date: ${formattedRetestDate ?? ""}</p>
                   </div>
                 `).join("")}
@@ -432,35 +419,30 @@
 
           <!-- Testing Carried Out Section -->
           <div class="carried-out-section">
+            <!-- Left Column: Company Details, Signature, and Equipment -->
             <div class="carried-out-div">
-              <!-- Left Column: Business Details and Signature -->
               <div class="left-col">
                 <h3>TESTING CARRIED OUT BY</h3>
                 <div class="left-sub-col">
                   <div>
                     <div class="details-box">
-                      <p>Company Name: ${user?.organization?.name ?? ""}</p>
+                      <p>Company Name: ${user.organization.name ?? ""}</p>
                       <p>Address: ${(user.organization.address_line_1 ?? "") + " " + (user.organization.address_line_2 ?? "")}</p>
                       <br>
                       <p>Postcode: ${user.organization.postcode ?? ""}</p>
                       <p>Email: ${user.organization.email?.toLowerCase() ?? ""}</p>
                       <p>Contact No: ${user.organization.phone ?? ""}</p>
                       <br>
-                      <p>Gas Safe Register No: ${user.organization.gas_safe_reg_number ?? ""}</p>
-                      <p>Engineer Name: ${payload.Issuer[0]?.engineerName ?? ""}</p>
-                      <br>
+                      <p>Scheme Registration No: ${user.organization.electrical_scheme_reg_number ?? ""}</p>
+                      <p>Engineer Name: ${payload.Engineer_Details[0].engineerName}</p>
                     </div>
-                    <div style="padding: 0; min-height: 100px" class="signature-box">
+                    <div class="signature-box">
                       <h3 style="background-color: white; color: black; font-weight: normal">Signature:</h3>
-                      ${payload.Issuer.map((item) => `
-                        <div>
-                          <img src=${item?.issuerSignature} style="height:125px; margin: 5px;" alt="no signature">
-                        </div>
-                      `).join("")}
+                      <img src=${payload.Engineer_Details[0].applianceSignature} />
                     </div>
-                    ${gas_instruments && gas_instruments.length > 0 ? `
+                    ${electrical_instruments && electrical_instruments.length > 0 ? `
                       <div class="instruments-box">
-                        ${gas_instruments?.map((item) => `
+                        ${electrical_instruments?.map((item) => `
                           <div style="margin-bottom: 10px">
                             <p>Instrument Used: ${item?.name ?? ""}</p>
                             <p>Serial Number: ${item?.serial_number ?? ""}</p>
@@ -469,206 +451,166 @@
                       </div>
                     ` : ""}
                   </div>
-
-                  <!-- Logos Column -->
                   <div class="logos-col">
                     <div class="logo-box">
                       <img src=${companyLogoB64}>
                     </div>
                     <div class="logo-box">
-                      <img src=${gasSafeSchemeLogo}>
+                      <img src=${schemeLogoB64}>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <!-- Right Column: Declaration -->
-              <div class="right-col">
-                <div class="declaration-box">
-                  <h3>DECLARATION</h3>
-                  <div>
-                    <p>
-                      This record can be used to document the outcomes of the checks and tests required by the Gas Safety (Installation and Use) Regulations.
-                      Some of the outcomes are as a result of visual inspection only and are recorded where appropriate.
-                      Unless specifically recorded, no detailed inspection of the flue lining, construction, or integrity has been performed.
-                    </p>
-                    <br>
-                    <p>
-                      Registered business/engineer details can be checked at www.gassaferegister.co.uk or by calling 0800 408 5500
-                    </p>
-                    <br>
-                  </div>
+            <!-- Right Column: Declaration and Limitations -->
+            <div class="right-col">
+              <div class="declaration-box">
+                <h3>DECLARATION</h3>
+                <div style="background-color: white; padding-left: 10px; font-size: 20px">
+                  This is to certify that the Electrical Appliances detailed on the  attached record sheets have been tested for electrical safety in  accordance with the Institute of Electrical Engineers Code of Practice  for In Service Inspection and Testing of Electrical Equipment. This does  not guarantee the future safety of the appliance, nor does it guarantee  the correct operation for any length of time. The user of the appliance  should pay particular attention to any fault or defect that may occur  during future use. If there is any doubt as to the safety or correct  operation, the appliance should be removed from service for further  inspection by a competent person.
+                  <br>
+                  <br>
+                  Any failed appliances should be removed from service until the defect has been rectified.
+                  <br>
+                  <br>
+                  These records should be kept safe so that they can be  produced if requested by a Health & Safety Inspector or Local  Authority Enforcement Officer when visiting your premises.
                 </div>
               </div>
+              ${user?.organization?.electrical_limitations ? `
+                <div class="limitations-box">
+                  <h3>LIMITATION ON TESTING</h3>
+                  <div style="background-color: white; padding-left: 10px">
+                    <!-- Display Preset limitations if any -->
+                    <p style="margin: 2px 5px; font-size: 18px">${user?.organization?.electrical_limitations ?? ""}</p>
+                  </div>
+                </div>
+              ` : ''}
             </div>
           </div>
-          <footer class="footer"> 
-            <h2>GSC${certificateNumber} Page-1</h2>
+
+          <footer class="footer">
+            <h2>PAT${certificateNumber} Page-${pageCounter}</h2>
           </footer>
         </div>
 
-        <!-- Page 2: Appliance and Inspection Details -->
-        <div class="page">
-          <header>
-            <div>
-              <h1>GAS SAFETY CERTIFICATE (GSC)</h1>
-            </div>
-            <div class="img-div">
-              <img src=${icon}>
-              <span>1</span>
-            </div>
-          </header>
+        ${appliancesChunks.map((chunk, index) => {
+    pageCounter++;
+    return `
+            <!-- PAGE ${pageCounter}: Appliance Register Chunk ${index + 1} -->
+            <div class="page">
+              <header>
+                <div>
+                  <h1>PORTABLE APPLIANCE TEST CERTIFICATE (PAT)</h1>
+                </div>
+                <div class="img-div">
+                  <img src=${icon}>
+                  <span>${pageCounter}</span>
+                </div>
+              </header>
 
-          <!-- Appliance Details Table -->
-          <div class="appliance-details">
-            <h2>APPLIANCES DETAILS</h2>
-            <table>
-              <thead>
-                <tr>
-                  <th style="width: 50px; text-align: center;"></th>
-                  <th>Location</th>
-                  <th>Type</th>
-                  <th>Manufacture</th>
-                  <th>Model</th>
-                  <th>Owned by Landlord/Homeowner</th>
-                  <th>Inspected</th>
-                  <th>Type of Flue</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${payload.Appliance_Details.map((item, index) => `
-                  <tr>
-                    <td> ${index + 1} </td>
-                    <td>${item?.locationOf ?? " "}</td>
-                    <td>${item?.type ?? " "}</td>
-                    <td>${item?.manufacturer ?? " "}</td>
-                    <td>${item?.model ?? " "}</td>
-                    <td>${item?.inspected ?? " "}</td>
-                    <td>${item?.owner ?? " "}</td>
-                    <td>${item?.flueType ?? " "}</td>
-                  </tr>
-                `).join("")}
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Inspection Details Table -->
-          <div class="appliance-details">
-            <h2>INSPECTION DETAILS</h2>
-            <table>
-              <thead>
-                <tr>
-                  <th style="padding-left: 8px; padding-right: 2px;"></th>
-                  <th class="small-font">Burner pressure or Gas Rate (net)</th>
-                  <th class="small-font">Working Pressure at appliance (mb)</th>
-                  <th class="small-font">Operation of safety device(s)</th>
-                  <th class="small-font">Ventilation satisfactory</th>
-                  <th class="small-font">Visual condition of flue and termination</th>
-                  <th class="small-font">Flue operation checks</th>
-                  <th class="small-font">Combustion analyser reading (if applicable)</th>
-                  <th class="small-font">Appliance Serviced</th>
-                  <th class="small-font">CO Alarm Expiry Date</th>
-                  <th class="small-font">CO Alarm Tested (if fitted)</th>
-                  <th class="small-font"><strong>SAFE TO USE</strong></th>
-                </tr>
-              </thead>
-              <tbody>
-                ${payload.Inspection_Details.map((item, index) => `
-                  <tr>
-                    <td style="padding-left: 8px">${index + 1}</td>
-                    <td>${item?.burnerPressure ?? " "}</td>
-                    <td>${item?.workPressure ?? " "}</td>
-                    <td>${item?.safetyDevice ?? " "}</td>
-                    <td>${item?.ventilation ?? " "}</td>
-                    <td>${item?.visualCondition ?? " "}</td>
-                    <td>${item?.operationCheck ?? " "}</td>
-                    <td>${item?.combustionReading ?? " "}</td>
-                    <td>${item?.serviced ?? " "}</td>
-                    <td>${item?.alarmExpiry ?? " "}</td>
-                    <td>${item?.alarmTested ?? " "}</td>
-                    <td>${item?.safe ?? " "}</td>
-                  </tr>
-                `).join("")}
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Bottom Tables and Outcomes -->
-          <div class="bottom-tables-outcomes">
-            <div class="bottom-tables">
-              <!-- Defects Identified Table -->
-              <div class="appliance-details">
+              <div class="appliance-register">
+                <h2>APPLIANCE REGISTER</h2>
                 <table>
                   <thead>
                     <tr>
-                      <th colspan="2" style="width: 60%; text-align: left; padding-left: 10px; background-color:#2C3F7C; color: white; border-right-color: #2C3F7C;">DEFECT IDENTIFIED</th>
-                      <th style="background-color:#2C3F7C; color: white; border-right-color: #2C3F7C; font-size: 16px;">GIUSP CLASSIFICATION EG. AR/ID</th>
-                      <th style="background-color:#2C3F7C; color: white; font-size: 16px;">WARNING/ADVISORY RECORD PROVIDED?</th>
+                      <th class="vertical apid"><span>Appliance ID</span></th>
+                      <th class="horizontal"><span>Appliance</span></th>
+                      <th class="horizontal"><span>Location</span></th>
+                      <th class="vertical"><span>Fuse Rating (A)</span></th>
+                      <th class="vertical"><span>Class</span></th>
+                      <th class="vertical"><span>Visual Inspection</span></th>
+                      <th class="vertical"><span>Polarity</span></th>
+                      <th class="vertical"><span>Earth Continuity (&Omega;)</span></th>
+                      <th class="vertical"><span>Insulation Resistance M(&Omega;)</span></th>
+                      <th class="vertical"><span>Leakage (mA)</span></th>
+                      <th class="vertical"><span>Load Test (kVA)</span></th>
+                      <th class="vertical"><span>Pass/Fail</span></th>
                     </tr>
                   </thead>
                   <tbody>
-                    ${payload.Defects_Identified.map((item, index) => `
+                    ${chunk.map((item) => `
                       <tr>
-                        <td style="width: 8%">${index + 1}</td>
-                        <td style="text-align: left; padding-left: 10px;">${item?.defectIdentied ?? ""}</td>
-                        <td>${item?.classification ?? ""}</td>
-                        <td>${item?.record ?? ""}</td>
+                        <td style="font-size: 22px">${item?.applianceId ?? ""}</td>
+                        <td style="font-size: 22px">${item?.applianceName ?? ""}</td>
+                        <td style="font-size: 22px">${item?.location ?? ""}</td>
+                        <td style="font-size: 22px">${item?.fuseRating ?? ""}</td>
+                        <td style="font-size: 22px">${item?.class ?? ""}</td>
+                        <td style="font-size: 22px">${item?.visualInspection ?? ""}</td>
+                        <td style="font-size: 22px">${item?.polarityCheck ?? ""}</td>
+                        <td style="font-size: 22px">${item?.earthContinuity ?? ""}</td>
+                        <td style="font-size: 22px">${item?.insulationResistance ?? ""}</td>
+                        <td style="font-size: 22px">${item?.leakage ?? ""}</td>
+                        <td style="font-size: 22px">${item?.loadTest ?? ""}</td>
+                        <td style="font-size: 22px">${item?.finalResult ?? ""}</td>
                       </tr>
                     `).join("")}
                   </tbody>
                 </table>
               </div>
-
-              <!-- Remedial Action Taken Table -->
-              <div class="appliance-details">
-                <h2>REMEDIAL ACTION TAKEN</h2>
-                <table>
-                  <tbody>
-                    ${payload.Remedial_Action.map((item, index) => `
-                      <tr>
-                        <td style="width: 8%">${index + 1}</td>
-                        <td style="text-align: justify; padding-left: 15px;">${item?.action ?? ""}</td>
-                      </tr>
-                    `).join("")}
-                  </tbody>
-                </table>
-              </div>
-
-              <!-- Engineer Comments -->
-              <div class="appliance-details">
-                <h2>NOTE</h2>
-                <div style="border: 1px solid black; padding: 5px">
-                  ${payload.Engineer_Comments.map((item) => `
-                    <p style="margin: 2px; font-size: 21px">${item?.comments ?? ""}</p>
-                  `).join("")}
-                </div>
-              </div>
+              <footer class="footer">
+                <h2>PAT${certificateNumber} Page-${pageCounter}</h2>
+              </footer>
             </div>
+          `;
+  }).join("")}
 
-            <!-- Verdict Outcomes -->
-            ${payload.Verdict.map((item) => `
-              <div class="outcome-box">
-                <p style="font-size: 20px">
-                  Outcome of gas installation pipework visual inspection : <strong>${item?.gasInstallation ?? ""}</strong>
-                </p>
-                <p style="font-size: 20px">
-                  Outcome of gas supply pipework visual inspection : <strong>${item?.gasSupply ?? ""}</strong>
-                </p>
-                <p style="font-size: 20px">
-                  Is the Emergency Control Valve access satisfactory ?: <strong>${item?.valveAccess ?? ""}</strong>
-                </p>
-                <p style="font-size: 20px">
-                  Outcome of gas tightness test ?: <strong>${item?.gasTightness ?? ""}</strong>
-                </p>
-                <p style="font-size: 20px">
-                  Is the protective Equipotential bonding satisfactory ?: <strong>${item?.bonding ?? ""}</strong>
-                </p>
+        <!-- Failed Appliances and Notes Pages -->
+        ${(() => {
+      const failedItems = payload?.Appliances[0]?.appliancesList?.filter((item) => item?.finalResult === 'Fail') || [];
+      let failedChunks = chunkArray(failedItems, 14);
+      if (failedChunks.length === 0) failedChunks = [[]];
+
+      return failedChunks.map((chunk, index) => {
+        pageCounter++;
+        return `
+              <div class="page">
+                <header>
+                  <div>
+                    <h1>PORTABLE APPLIANCE TEST CERTIFICATE (PAT)</h1>
+                  </div>
+                  <div class="img-div">
+                    <img src=${icon}>
+                    <span>${pageCounter}</span>
+                  </div>
+                </header>
+
+                <div class="appliance-failed">
+                  <h2>FAILED APPLIANCES</h2>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th class="vertical"><span>Appliance ID</span></th>
+                        <th class="horizontal"><span>Appliance</span></th>
+                        <th class="horizontal"><span>Reason for Failure </span></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${chunk.map(item => (`
+                        <tr>
+                          <td style="font-size: 22px">${item?.applianceId ?? ""} </td>
+                          <td style="font-size: 22px">${item?.applianceName ?? ""} </td>
+                          <td style="font-size: 22px">${item?.reasonForFailure ?? ""} </td>
+                        </tr>
+                      `)).join('')}
+                    </tbody>
+                  </table>
+                </div>
+
+                ${index === failedChunks.length - 1 ? `
+                  <div class="section">
+                    <div class="section-title">NOTES</div>
+                    <div class="notes-box" style="background-color: white">
+                      ${payload?.Note?.[0]?.Note ?? ""}
+                    </div>
+                  </div>
+                ` : ''}
+                <footer class="footer">
+                  <h2>PAT${certificateNumber} Page-${pageCounter}</h2>
+                </footer>
               </div>
-            `).join("")}
-          </div>
-          <footer class="footer"> 
-            <h2>GSC${certificateNumber} Page-2</h2>
-          </footer>
-        </div>
+            `;
+      }).join("");
+    })()}
       </body>
-    </html>
+  </html>
